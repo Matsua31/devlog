@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DevLog — Mi camino como dev</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <header>
+    <div class="header-inner">
+      <div class="logo">
+        <span class="logo-bracket">[</span>
+        <span class="logo-text">devlog</span>
+        <span class="logo-bracket">]</span>
+      </div>
+      <p class="header-sub">Mi bitácora de aprendizaje en desarrollo web</p>
+    </div>
+
+    <nav class="filters">
+      <button class="filter-btn active" data-filter="all">Todo</button>
+      <button class="filter-btn" data-filter="nota">Notas</button>
+      <button class="filter-btn" data-filter="recurso">Recursos</button>
+      <button class="filter-btn" data-filter="proyecto">Proyectos</button>
+      <button class="filter-btn" data-filter="logro">Logros</button>
+    </nav>
+  </header>
+
+  <main>
+    <aside class="sidebar">
+      <div class="stats-block">
+        <div class="stat">
+          <span class="stat-number" id="total-entries">0</span>
+          <span class="stat-label">entradas</span>
+        </div>
+        <div class="stat">
+          <span class="stat-number" id="days-count">0</span>
+          <span class="stat-label">días</span>
+        </div>
+        <div class="stat">
+          <span class="stat-number" id="streak-count">0</span>
+          <span class="stat-label">racha</span>
+        </div>
+      </div>
+
+      <div class="tags-block">
+        <h3 class="block-title">Temas</h3>
+        <div id="tags-cloud" class="tags-cloud"></div>
+      </div>
+
+      <button class="new-entry-btn" id="open-modal">+ Nueva entrada</button>
+    </aside>
+
+    <section class="feed" id="feed">
+      <!-- entries rendered by JS -->
+    </section>
+  </main>
+
+  <!-- Modal -->
+  <div class="modal-overlay" id="modal-overlay">
+    <div class="modal">
+      <div class="modal-header">
+        <h2>Nueva entrada</h2>
+        <button class="modal-close" id="close-modal">✕</button>
+      </div>
+
+      <div class="modal-body">
+        <div class="field">
+          <label for="entry-title">Título</label>
+          <input type="text" id="entry-title" placeholder="¿Qué aprendiste hoy?" />
+        </div>
+
+        <div class="field">
+          <label for="entry-type">Tipo</label>
+          <select id="entry-type">
+            <option value="nota">📝 Nota</option>
+            <option value="recurso">🔗 Recurso</option>
+            <option value="proyecto">🛠️ Proyecto</option>
+            <option value="logro">🏆 Logro</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="entry-tags">Etiquetas <span class="hint">(separadas por coma)</span></label>
+          <input type="text" id="entry-tags" placeholder="html, css, flexbox" />
+        </div>
+
+        <div class="field">
+          <label for="entry-content">Contenido</label>
+          <textarea id="entry-content" rows="6" placeholder="Escribe tus notas, links, reflexiones..."></textarea>
+        </div>
+
+        <div class="field" id="link-field">
+          <label for="entry-link">Link <span class="hint">(opcional)</span></label>
+          <input type="url" id="entry-link" placeholder="https://..." />
+        </div>
+
+        <div class="modal-actions">
+          <button class="btn-cancel" id="cancel-modal">Cancelar</button>
+          <button class="btn-save" id="save-entry">Guardar entrada</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="data/entries.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
